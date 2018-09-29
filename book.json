@@ -1,0 +1,58 @@
+{
+    "author": "wenxuanjun",
+    "title": "Linux From Scratch ",
+    "description": "Linux From Scratch 简体中文版",
+    "language": "zh-hans",
+    "output.name": "site",
+    "plugins": [
+        "splitter",
+        "github",
+        "prism", 
+        "-highlight",
+        "back-to-top-button",
+        "prism-themes",
+        "search-plus",
+        "-search",
+        "-lunr",
+        "katex",
+        "-sharing",
+        "sharing-plus"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/wenxuanjun/LFS-BOOK-8.3-systemd"
+        },
+        "prism": {
+            "css": [
+                "prismjs/themes/prism-tomorrow.css"
+                ]
+        },
+        "sharing": {
+            "douban": false,
+            "facebook": false,
+            "google": false,
+            "hatenaBookmark": false,
+            "instapaper": false,
+            "line": false,
+            "linkedin": false,
+            "messenger": false,
+            "pocket": false,
+            "qq": true,
+            "qzone": true,
+            "stumbleupon": false,
+            "twitter": false,
+            "viber": false,
+            "vk": false,
+            "weibo": true,
+            "whatsapp": false,
+            "all": [
+                "facebook",
+                "google",
+                "twitter",
+                "weibo",
+                "qq",
+                "qzone"
+            ]
+        }
+    }
+}

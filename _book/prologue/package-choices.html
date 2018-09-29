@@ -1,0 +1,796 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>本书中的软件包逻辑 · Linux From Scratch </title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="wenxuanjun">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="prerequisites.html" />
+    
+    
+    <link rel="prev" href="standards.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Linux From Scratch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    序言
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="foreword.html">
+            
+                <a href="foreword.html">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="audience.html">
+            
+                <a href="audience.html">
+            
+                    
+                    致读者
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="architecture.html">
+            
+                <a href="architecture.html">
+            
+                    
+                    LFS 的目标架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="standards.html">
+            
+                <a href="standards.html">
+            
+                    
+                    LFS 和标准
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.5" data-path="package-choices.html">
+            
+                <a href="package-choices.html">
+            
+                    
+                    本书中的软件包逻辑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="prerequisites.html">
+            
+                <a href="prerequisites.html">
+            
+                    
+                    前置需求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="typography.html">
+            
+                <a href="typography.html">
+            
+                    
+                    排版约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="organization.html">
+            
+                <a href="organization.html">
+            
+                    
+                    本书结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="errata.html">
+            
+                <a href="errata.html">
+            
+                    
+                    勘误表
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    第一章 介绍
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../chapter01/how.html">
+            
+                <a href="../chapter01/how.html">
+            
+                    
+                    1.1 如何构建 LFS 系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../chapter01/whatsnew.html">
+            
+                <a href="../chapter01/whatsnew.html">
+            
+                    
+                    1.2 上次发布以来的更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../chapter01/changelog.html">
+            
+                <a href="../chapter01/changelog.html">
+            
+                    
+                    1.3 更新日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../chapter01/resources.html">
+            
+                <a href="../chapter01/resources.html">
+            
+                    
+                    1.4 资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../chapter01/askforhelp.html">
+            
+                <a href="../chapter01/askforhelp.html">
+            
+                    
+                    1.5 帮助
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    第二章 准备宿主机
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../chapter02/introduction.html">
+            
+                <a href="../chapter02/introduction.html">
+            
+                    
+                    2.1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../chapter02/hostreqs.html">
+            
+                <a href="../chapter02/hostreqs.html">
+            
+                    
+                    2.2 宿主机需求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../chapter02/stages.html">
+            
+                <a href="../chapter02/stages.html">
+            
+                    
+                    2.3 分阶段构造 LFS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../chapter02/creatingpartition.html">
+            
+                <a href="../chapter02/creatingpartition.html">
+            
+                    
+                    2.4 创建新分区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../chapter02/creatingfilesystem.html">
+            
+                <a href="../chapter02/creatingfilesystem.html">
+            
+                    
+                    2.5 在分区上创建文件系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../chapter02/aboutlfs.html">
+            
+                <a href="../chapter02/aboutlfs.html">
+            
+                    
+                    2.6 设置 $LFS 变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../chapter02/mounting.html">
+            
+                <a href="../chapter02/mounting.html">
+            
+                    
+                    2.7 挂载新分区
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >本书中的软件包逻辑</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x672C;&#x4E66;&#x4E2D;&#x7684;&#x8F6F;&#x4EF6;&#x5305;&#x903B;&#x8F91;">&#x672C;&#x4E66;&#x4E2D;&#x7684;&#x8F6F;&#x4EF6;&#x5305;&#x903B;&#x8F91;</h1>
+<p>&#x6B63;&#x5982;&#x524D;&#x6587;&#x6240;&#x8FF0;&#xFF0C;LFS &#x7684;&#x76EE;&#x6807;&#x662F;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x53EF;&#x7528;&#x7684;&#x57FA;&#x672C;&#x7CFB;&#x7EDF;&#x3002;&#x8BE5;&#x7CFB;&#x7EDF;&#x5305;&#x542B;&#x81EA;&#x590D;&#x5236;&#x6240;&#x9700;&#x7684;&#x6240;&#x6709;&#x8F6F;&#x4EF6;&#x5305;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x4ECE;&#x4E00;&#x4E2A;&#x76F8;&#x5BF9;&#x5C0F;&#x7684;&#x57FA;&#x7840;&#x5F00;&#x59CB;&#xFF0C;&#x4F9D;&#x9009;&#x62E9;&#x914D;&#x7F6E;&#x4E00;&#x4E2A;&#x76F8;&#x5BF9;&#x590D;&#x6742;&#x7684;&#x7CFB;&#x7EDF;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x4E25;&#x683C;&#x610F;&#x4E49;&#x4E0A;&#x8BF4;&#xFF0C;LFS &#x5E76;&#x4E0D;&#x662F;&#x6700;&#x5C0F;&#x53EF;&#x7528;&#x7CFB;&#x7EDF;&#x7684;&#x4EE3;&#x540D;&#x8BCD;&#x3002;&#x751A;&#x81F3;&#x67D0;&#x4E9B;&#x6700;&#x91CD;&#x8981;&#x7684;&#x8F6F;&#x4EF6;&#x5305;&#x90FD;&#x4E0D;&#x4E00;&#x5B9A;&#x5FC5;&#x987B;&#x5B89;&#x88C5;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x5217;&#x8868;&#x4ECB;&#x7ECD;&#x4E86;&#x672C;&#x4E66;&#x4E2D;&#x9009;&#x62E9;&#x6BCF;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x7406;&#x7531;&#x3002; </p>
+<ul>
+<li><p>Acl</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x7BA1;&#x7406;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x5217;&#x8868;&#xFF08;ACL&#xFF09;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;&#x66F4;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x81EA;&#x4E3B;&#x8BBF;&#x95EE;&#x6743;&#x3002;</p>
+</li>
+<li><p>Attr</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x7BA1;&#x7406;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x5BF9;&#x8C61;&#x6269;&#x5C55;&#x5C5E;&#x6027;&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
+</li>
+<li><p>Autoconf</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x80FD;&#x6839;&#x636E;&#x5F00;&#x53D1;&#x8005;&#x7684;&#x6A21;&#x677F;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x914D;&#x7F6E;&#x6E90;&#x4EE3;&#x7801;&#x7684; shell &#x811A;&#x672C;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x66F4;&#x65B0;&#x4E86;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x4E4B;&#x540E;&#x91CD;&#x65B0;&#x6784;&#x5EFA;&#x8F6F;&#x4EF6;&#x5305;&#x901A;&#x5E38;&#x9700;&#x8981;&#x8FD9;&#x4E2A;&#x3002;</p>
+</li>
+<li><p>Automake</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4ECE;&#x6A21;&#x677F;&#x751F;&#x6210; Make &#x6587;&#x4EF6;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x66F4;&#x65B0;&#x4E86;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x4E4B;&#x540E;&#x91CD;&#x65B0;&#x6784;&#x5EFA;&#x8F6F;&#x4EF6;&#x5305;&#x901A;&#x5E38;&#x9700;&#x8981;&#x8FD9;&#x4E2A;&#x3002;</p>
+</li>
+<li><p>Bash</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x80FD;&#x6EE1;&#x8DB3;&#x63D0;&#x4F9B;&#x5230;&#x7CFB;&#x7EDF;&#x7684; Bourne Shell &#x63A5;&#x53E3;&#x7684; LSB &#x6838;&#x5FC3;&#x9700;&#x6C42;&#x3002;&#x7531;&#x4E8E;&#x5176;&#x901A;&#x7528;&#x6027;&#x548C;&#x5728;&#x57FA;&#x672C; shell &#x529F;&#x80FD;&#x4E0A;&#x7684;&#x6269;&#x5C55;&#x80FD;&#x529B;&#xFF0C;&#x6240;&#x4EE5;&#x9009;&#x62E9;&#x5B83;&#x800C;&#x4E0D;&#x662F;&#x5176;&#x5B83;&#x7684; shell &#x8F6F;&#x4EF6;&#x5305;&#x3002;</p>
+</li>
+<li><p>Bc</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x4EFB;&#x610F;&#x7CBE;&#x5EA6;&#x7684;&#x6570;&#x503C;&#x5904;&#x7406;&#x8BED;&#x8A00;&#x3002;&#x5728;&#x6784;&#x5EFA; Linux &#x5185;&#x6838;&#x65F6;&#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Binutils</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x94FE;&#x63A5;&#x5668;&#x3001;&#x6C47;&#x7F16;&#x5668;&#x548C;&#x5176;&#x5B83;&#x5904;&#x7406;&#x5BF9;&#x8C61;&#x6587;&#x4EF6;&#x7684;&#x5DE5;&#x5177;&#x3002;&#x7F16;&#x8BD1; LFS &#x7CFB;&#x7EDF;&#x4EE5;&#x53CA;&#x4E4B;&#x4E0A;&#x7684;&#x5927;&#x90E8;&#x5206;&#x8F6F;&#x4EF6;&#x5305;&#x9700;&#x8981;&#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x4E2D;&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
+</li>
+<li><p>Bison</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x4E2D;&#x6709; yacc(Yet Another Compiler Compiler) &#x7684; GNU &#x7248;&#x672C;&#xFF0C;&#x9700;&#x8981;&#x7528;&#x6765;&#x6784;&#x5EFA;&#x4E00;&#x4E9B;&#x5176;&#x5B83;&#x7684; LFS &#x7A0B;&#x5E8F;&#x3002;</p>
+</li>
+<li><p>Bzip2</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x7528;&#x6765;&#x538B;&#x7F29;&#x548C;&#x89E3;&#x538B;&#x7F29;&#x6587;&#x4EF6;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x5728;&#x89E3;&#x538B;&#x7F29;&#x5F88;&#x591A; LFS &#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Check</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x5176;&#x5B83;&#x7A0B;&#x5E8F;&#x7684;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;&#x3002;&#x5B83;&#x53EA;&#x5B89;&#x88C5;&#x5728;&#x4E34;&#x65F6;&#x5DE5;&#x5177;&#x94FE;&#x4E2D;&#x3002;</p>
+</li>
+<li><p>Coreutils</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x67E5;&#x770B;&#x548C;&#x7BA1;&#x7406;&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;&#x7684;&#x91CD;&#x8981;&#x7A0B;&#x5E8F;&#x3002;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x91CC;&#x7BA1;&#x7406;&#x6587;&#x4EF6;&#x548C;&#x6BCF;&#x4E2A; LFS &#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x5B89;&#x88C5;&#x8FC7;&#x7A0B;&#x4E2D;&#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>D-Bus</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x63D0;&#x4F9B;&#x6D88;&#x606F;&#x603B;&#x7EBF;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x6D88;&#x606F;&#x603B;&#x7EBF;&#x662F;&#x4E00;&#x79CD;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x901A;&#x4FE1;&#x7684;&#x7B80;&#x5355;&#x65B9;&#x5F0F;&#x3002;systemd &#x4E5F;&#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>DejaGNU</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x5176;&#x5B83;&#x7A0B;&#x5E8F;&#x7684;&#x6846;&#x67B6;&#x3002;&#x53EA;&#x5B89;&#x88C5;&#x5728;&#x4E34;&#x65F6;&#x5DE5;&#x5177;&#x94FE;&#x4E2D;&#x3002;</p>
+</li>
+<li><p>Diffutils</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x663E;&#x793A;&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;&#x5DEE;&#x5F02;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x8FD9;&#x4E9B;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x521B;&#x5EFA;&#x8865;&#x4E01;&#xFF0C;&#x4E5F;&#x7528;&#x4E8E;&#x5F88;&#x591A;&#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x3002;</p>
+</li>
+<li><p>E2fsprogs</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x5904;&#x7406; ext2&#x3001;ext3 &#x548C; ext4 &#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x5DE5;&#x5177;&#x3002;&#x8FD9;&#x4E9B;&#x662F; Linux &#x4E0A;&#x652F;&#x6301;&#x7684;&#x6700;&#x5E38;&#x7528;&#x800C;&#x4E14;&#x5B8C;&#x5168;&#x7ECF;&#x8FC7;&#x8003;&#x9A8C;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002;</p>
+</li>
+<li><p>Expat</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x76F8;&#x5BF9;&#x5C0F;&#x7684; XML &#x89E3;&#x6790;&#x5E93;&#x3002;Perl &#x6A21;&#x5757; XML::Parser &#x9700;&#x8981;&#x7528;&#x5230;&#x8FD9;&#x4E2A;&#x3002;</p>
+</li>
+<li><p>Expect</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x751F;&#x6210;&#x4E0E;&#x5176;&#x5B83;&#x7A0B;&#x5E8F;&#x4EA4;&#x4E92;&#x7684;&#x811A;&#x672C;&#x5BF9;&#x8BDD;&#x6846;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x901A;&#x5E38;&#x7528;&#x6765;&#x6D4B;&#x8BD5;&#x5176;&#x5B83;&#x8F6F;&#x4EF6;&#x5305;&#x3002;&#x53EA;&#x5B89;&#x88C5;&#x5728;&#x4E34;&#x65F6;&#x5DE5;&#x5177;&#x94FE;&#x4E2D;&#x3002;</p>
+</li>
+<li><p>File</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x80FD;&#x5224;&#x65AD;&#x7ED9;&#x5B9A;&#x6587;&#x4EF6;&#x7684;&#x7C7B;&#x578B;&#x7684;&#x5DE5;&#x5177;&#x3002;&#x4E00;&#x4E9B;&#x8F6F;&#x4EF6;&#x5305;&#x9700;&#x8981;&#x7528;&#x5B83;&#x6765;&#x6784;&#x5EFA;&#x3002;</p>
+</li>
+<li><p>Findutils</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x5728;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x67E5;&#x627E;&#x6587;&#x4EF6;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x5728;&#x5F88;&#x591A;&#x8F6F;&#x4EF6;&#x5305;&#x6784;&#x5EFA;&#x811A;&#x672C;&#x4E2D;&#x4F1A;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Flex</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x80FD;&#x751F;&#x6210;&#x8BC6;&#x522B;&#x6587;&#x672C;&#x6A21;&#x5F0F;&#x7A0B;&#x5E8F;&#x7684;&#x5DE5;&#x5177;&#x3002;&#x662F; lex(lexical analyzer) &#x7A0B;&#x5E8F;&#x7684; GNU &#x7248;&#x672C;&#x3002;&#x6784;&#x5EFA;&#x5F88;&#x591A; LFS &#x8F6F;&#x4EF6;&#x5305;&#x9700;&#x8981;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Gawk</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x662F; awk(Aho-Weinberg-Kernighan) &#x7684; GNU &#x7248;&#x672C;&#x3002;&#x5728;&#x5F88;&#x591A;&#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x6784;&#x5EFA;&#x811A;&#x672C;&#x4E2D;&#x4F1A;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Gcc</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x662F; GNU &#x7F16;&#x8BD1;&#x5668;&#x5DE5;&#x5177;&#x96C6;&#x3002;&#x5B83;&#x5305;&#x62EC; C &#x548C; C++ &#x7684;&#x7F16;&#x8BD1;&#x5668;&#x4EE5;&#x53CA;&#x5176;&#x5B83;&#x4E00;&#x4E9B;&#x4E0D;&#x662F;&#x7531; LFS &#x6784;&#x5EFA;&#x7684;&#x8F6F;&#x4EF6;&#x5305;&#x3002;</p>
+</li>
+<li><p>GDBM</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86; GNU &#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x5E93;&#x3002;LFS &#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305; Man-DB &#x4F1A;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Gettext</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x5F88;&#x591A;&#x8F6F;&#x4EF6;&#x5305;&#x56FD;&#x9645;&#x5316;&#x548C;&#x672C;&#x5730;&#x5316;&#x9700;&#x8981;&#x7528;&#x5230;&#x7684;&#x5DE5;&#x5177;&#x548C;&#x5E93;&#x3002;</p>
+</li>
+<li><p>Glibc</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E3B;&#x8981;&#x7684; C &#x8BED;&#x8A00;&#x5E93;&#x3002;&#x7F3A;&#x5C11;&#x5B83; Linux &#x7A0B;&#x5E8F;&#x5C31;&#x8FD0;&#x884C;&#x4E0D;&#x4E86;&#x3002;</p>
+</li>
+<li><p>GMP</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x80FD;&#x63D0;&#x4F9B;&#x4EFB;&#x610F;&#x7CBE;&#x5EA6;&#x6570;&#x503C;&#x8FD0;&#x7B97;&#x7684;&#x6570;&#x5B66;&#x5E93;&#x3002;&#x7F16;&#x8BD1; Gcc &#x4F1A;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Gperf</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x80FD;&#x4ECE;&#x4E00;&#x4E2A;&#x952E;&#x96C6;&#x751F;&#x6210;&#x5B8C;&#x7F8E;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x7684;&#x7A0B;&#x5E8F;&#x3002;sysetmd &#x4F1A;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Grep</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x5728;&#x6587;&#x4EF6;&#x4E2D;&#x641C;&#x7D22;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x5927;&#x90E8;&#x5206;&#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x6784;&#x5EFA;&#x811A;&#x672C;&#x4F1A;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Groff</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x5904;&#x7406;&#x548C;&#x683C;&#x5F0F;&#x5316;&#x6587;&#x672C;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x529F;&#x80FD;&#x662F;&#x683C;&#x5F0F;&#x5316; man &#x9875;&#x9762;&#x3002;</p>
+</li>
+<li><p>GRUB</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x662F; Grand Unified Boot Loader&#x3002;&#x662F;&#x53EF;&#x7528;&#x7684;&#x5F15;&#x5BFC;&#x52A0;&#x8F7D;&#x5668;&#x4E4B;&#x4E00;&#xFF0C;&#x4F46;&#x6700;&#x7075;&#x6D3B;&#x3002;</p>
+</li>
+<li><p>Gzip</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x538B;&#x7F29;&#x548C;&#x89E3;&#x538B;&#x7F29;&#x6587;&#x4EF6;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x89E3;&#x538B;&#x5F88;&#x591A; LFS &#x4EE5;&#x53CA;&#x4E4B;&#x4E0A;&#x7684;&#x8F6F;&#x4EF6;&#x5305;&#x65F6;&#x4F1A;&#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Iana-etc</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x548C;&#x534F;&#x8BAE;&#x7684;&#x6570;&#x636E;&#x3002;&#x542F;&#x7528;&#x5408;&#x9002;&#x7684;&#x7F51;&#x7EDC;&#x529F;&#x80FD;&#x4F1A;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Inetutils</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x57FA;&#x672C;&#x7F51;&#x7EDC;&#x7BA1;&#x7406;&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
+</li>
+<li><p>Intltool</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x80FD;&#x4ECE;&#x6E90;&#x6587;&#x4EF6;&#x4E2D;&#x62BD;&#x53D6;&#x53EF;&#x7FFB;&#x8BD1;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5DE5;&#x5177;&#x3002;</p>
+</li>
+<li><p>IProute2</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x548C;&#x9AD8;&#x7EA7;&#x7684; IPv4 &#x548C; IPv6 &#x7F51;&#x7EDC;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x7531;&#x4E8E;&#x5176; IPv6 &#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x9009;&#x62E9;&#x5B83;&#x800C;&#x4E0D;&#x9009;&#x62E9;&#x5176;&#x5B83;&#x7684;&#x5E38;&#x89C1;&#x7F51;&#x7EDC;&#x5DE5;&#x5177;&#x5305;&#xFF08;net-tools&#xFF09;&#x3002;</p>
+</li>
+<li><p>Kbd</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x952E;&#x76D8;&#x6620;&#x5C04;&#x6587;&#x4EF6;&#xFF0C;&#x7528;&#x4E8E;&#x975E; US &#x952E;&#x76D8;&#x7684;&#x952E;&#x76D8;&#x5DE5;&#x5177;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x63A7;&#x5236;&#x53F0;&#x5B57;&#x4F53;&#x3002;</p>
+</li>
+<li><p>Kmod</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x7528;&#x4E8E;&#x7BA1;&#x7406; Linux &#x5185;&#x6838;&#x6A21;&#x5757;&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
+</li>
+<li><p>Less</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x67E5;&#x770B;&#x5668;&#xFF0C;&#x5141;&#x8BB8;&#x67E5;&#x770B;&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x5411;&#x4E0A;&#x6216;&#x5411;&#x4E0B;&#x6EDA;&#x52A8;&#x3002;Man-DB &#x7528;&#x5B83;&#x6765;&#x67E5;&#x770B; man &#x9875;&#x9762;&#x3002;</p>
+</li>
+<li><p>Libcap</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5B9E;&#x73B0;&#x4E86;&#x53EF;&#x4EE5;&#x7528;&#x4E8E; Linux &#x5185;&#x6838;&#x7684;&#xFF0C;&#x4ECE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x5230; POSIX 1003.1e &#x7684;&#x63A5;&#x53E3;&#x3002;</p>
+</li>
+<li><p>Libelf</p>
+<p>  ELFIFTILS&#x9879;&#x76EE;&#x4E3A;ELF&#x6587;&#x4EF6;&#x548C;DWARF&#x6570;&#x636E;&#x63D0;&#x4F9B;&#x4E86;&#x5E93;&#x548C;&#x5DE5;&#x5177;&#x3002;&#x8FD9;&#x4E2A;&#x5305;&#x4E2D;&#x7684;&#x5927;&#x591A;&#x6570;&#x5B9E;&#x7528;&#x7A0B;&#x5E8F;&#x5728;&#x5176;&#x4ED6;&#x5305;&#x4E2D;&#x53EF;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x9700;&#x8981;&#x8FD9;&#x4E2A;&#x5E93;&#xFF08;&#x4E5F;&#x662F;&#x6700;&#x6709;&#x6548;&#x7684;&#xFF09;&#x6765;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x6784;&#x5EFA;Linux&#x5185;&#x6838;&#x3002;</p>
+</li>
+<li><p>Libffi</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5B9E;&#x73B0;&#x4E86;&#x5404;&#x79CD;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x7684;&#x53EF;&#x79FB;&#x690D;&#x7684;&#x9AD8;&#x7EA7;&#x7F16;&#x7A0B;&#x63A5;&#x53E3;&#x3002;&#x6709;&#x4E9B;&#x7A0B;&#x5E8F;&#x53EF;&#x80FD;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x4E0D;&#x77E5;&#x9053;&#x8981;&#x4F20;&#x9012;&#x7ED9;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x89E3;&#x91CA;&#x5668;&#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x88AB;&#x544A;&#x77E5;&#x7528;&#x4E8E;&#x8C03;&#x7528;&#x7ED9;&#x5B9A;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x7684;&#x6570;&#x91CF;&#x548C;&#x7C7B;&#x578B;&#x3002;Libffi&#x53EF;&#x7528;&#x4E8E;&#x8FD9;&#x6837;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x4EE5;&#x63D0;&#x4F9B;&#x4ECE;&#x89E3;&#x91CA;&#x5668;&#x7A0B;&#x5E8F;&#x5230;&#x7F16;&#x8BD1;&#x4EE3;&#x7801;&#x7684;&#x6865;&#x6881;&#x3002; </p>
+</li>
+<li><p>Libpipeline</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x4EE5;&#x7075;&#x6D3B;&#x548C;&#x4FBF;&#x6377;&#x7684;&#x65B9;&#x5F0F;&#x64CD;&#x4F5C;&#x5B50;&#x8FDB;&#x7A0B;&#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x5E93;&#x3002;Man-DB &#x8F6F;&#x4EF6;&#x5305;&#x4F1A;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Libtool</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E00;&#x4E9B; GNU &#x901A;&#x7528;&#x5E93;&#x652F;&#x6301;&#x811A;&#x672C;&#x3002;&#x5B83;&#x964D;&#x4F4E;&#x4E86;&#x5728;&#x4E00;&#x81F4;&#x3001;&#x53EF;&#x79FB;&#x690D;&#x7684;&#x63A5;&#x53E3;&#x4E0A;&#x4F7F;&#x7528;&#x5171;&#x4EAB;&#x5E93;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x3002;&#x5728;&#x5176;&#x4ED6; LFS &#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x6D4B;&#x8BD5;&#x5957;&#x4EF6;&#x91CC;&#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Linux Kernel</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5C31;&#x662F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x3002;&#x5373;&#x6211;&#x4EEC;&#x5E38;&#x8BF4;&#x7684; &#x201C;GNU/Linux&#x201D; &#x4E2D;&#x7684; &#x201C;Linux&#x201D;&#x3002;</p>
+</li>
+<li><p>M4</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684;&#x6587;&#x672C;&#x5B8F;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x4F5C;&#x4E3A;&#x5176;&#x5B83;&#x7A0B;&#x5E8F;&#x7684;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#x4F7F;&#x7528;&#x3002;</p>
+</li>
+<li><p>Make</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x6307;&#x5BFC;&#x8F6F;&#x4EF6;&#x5305;&#x6784;&#x5EFA;&#x7684;&#x7A0B;&#x5E8F;&#x3002;LFS &#x4E2D;&#x7684;&#x51E0;&#x4E4E;&#x6BCF;&#x4E2A;&#x5305;&#x90FD;&#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Man-DB</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x67E5;&#x627E;&#x548C;&#x67E5;&#x770B; man &#x9875;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x7531;&#x4E8E;&#x5176;&#x66F4;&#x597D;&#x7684;&#x56FD;&#x9645;&#x5316;&#x529F;&#x80FD;&#xFF0C;&#x7528;&#x6765;&#x4EE3;&#x66FF; man&#x8F6F;&#x4EF6;&#x5305;&#x3002;&#x5B83;&#x63D0;&#x4F9B;&#x4E86; man &#x7A0B;&#x5E8F;&#x3002;</p>
+</li>
+<li><p>Man-pages</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x57FA;&#x672C;&#x7684; Linux man &#x9875;&#x9762;&#x7684;&#x771F;&#x6B63;&#x5185;&#x5BB9;&#x3002;</p>
+</li>
+<li><p>MPC</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x590D;&#x6570;&#x8FD0;&#x7B97;&#x7684;&#x51FD;&#x6570;&#x3002;Gcc &#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>MPFR</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x591A;&#x7CBE;&#x5EA6;&#x8FD0;&#x7B97;&#x7684;&#x51FD;&#x6570;&#x3002;Gcc &#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Ninja</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5173;&#x6CE8;&#x901F;&#x5EA6;&#x7684;&#x5C0F;&#x578B;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x3002;&#x5B83;&#x88AB;&#x8BBE;&#x8BA1;&#x6210;&#x7531;&#x4E00;&#x4E2A;&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x751F;&#x6210;&#x5B83;&#x7684;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x5C3D;&#x53EF;&#x80FD;&#x5FEB;&#x5730;&#x8FD0;&#x884C;&#x6784;&#x5EFA;&#x3002; </p>
+</li>
+<li><p>Ncurses</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x5904;&#x7406;&#x5B57;&#x7B26;&#x754C;&#x9762;&#x7684;&#x4E0D;&#x4F9D;&#x8D56;&#x7279;&#x5B9A;&#x7EC8;&#x7AEF;&#x7684;&#x5E93;&#x3002;&#x901A;&#x5E38;&#x7528;&#x6765;&#x4E3A;&#x83DC;&#x5355;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x5149;&#x6807;&#x63A7;&#x5236;&#x3002;&#x4E00;&#x4E9B; LFS &#x7684;&#x8F6F;&#x4EF6;&#x5305;&#x4F1A;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Openssl</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x6709;&#x5173;&#x5BC6;&#x7801;&#x7684;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x548C;&#x5E93;&#x3002;&#x8FD9;&#x5BF9;&#x4E8E;&#x5411;&#x5305;&#x62EC;Linux&#x5185;&#x6838;&#x5728;&#x5185;&#x7684;&#x5176;&#x4ED6;&#x5305;&#x63D0;&#x4F9B;&#x52A0;&#x5BC6;&#x529F;&#x80FD;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002; </p>
+</li>
+<li><p>Patch</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x901A;&#x8FC7;&#x8865;&#x4E01;&#x6587;&#x4EF6;&#x6765;&#x4FEE;&#x6539;&#x6216;&#x65B0;&#x5EFA;&#x6587;&#x4EF6;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x8865;&#x4E01;&#x6587;&#x4EF6;&#x901A;&#x5E38;&#x662F;&#x7531; diff &#x7A0B;&#x5E8F;&#x521B;&#x5EFA;&#x7684;&#x3002;&#x4E00;&#x4E9B; LFS &#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x4F1A;&#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Perl</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x65F6;&#x8BED;&#x8A00; PERL &#x7684;&#x89E3;&#x6790;&#x5668;&#x3002;&#x4E00;&#x4E9B; LFS &#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x5B89;&#x88C5;&#x548C;&#x6D4B;&#x8BD5;&#x5957;&#x4EF6;&#x4F1A;&#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Pkg-config</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x8FD4;&#x56DE;&#x5DF2;&#x5B89;&#x88C5;&#x5E93;&#x6216;&#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x5143;&#x6570;&#x636E;&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
+</li>
+<li><p>Procps-NG</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x76D1;&#x89C6;&#x8FDB;&#x7A0B;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x8FD9;&#x4E9B;&#x7A0B;&#x5E8F;&#x5BF9;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF0C;&#x4E5F;&#x7528;&#x4E8E; LFS &#x7684;&#x542F;&#x52A8;&#x811A;&#x672C;&#x3002;</p>
+</li>
+<li><p>Psmisc</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x663E;&#x793A;&#x8FD0;&#x884C;&#x4E2D;&#x8FDB;&#x7A0B;&#x4FE1;&#x606F;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x8FD9;&#x4E9B;&#x7A0B;&#x5E8F;&#x5BF9;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;</p>
+</li>
+<li><p>Python 3</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x89E3;&#x91CA;&#x6027;&#x8BED;&#x8A00;&#xFF0C;&#x5B83;&#x5177;&#x6709;&#x5F3A;&#x8C03;&#x4EE3;&#x7801;&#x53EF;&#x8BFB;&#x6027;&#x7684;&#x8BBE;&#x8BA1;&#x54F2;&#x5B66;&#x3002;</p>
+</li>
+<li><p>Readline</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x547D;&#x4EE4;&#x884C;&#x7F16;&#x8F91;&#x548C;&#x5386;&#x53F2;&#x529F;&#x80FD;&#x7684;&#x5E93;&#x3002;Bash &#x4F1A;&#x4F7F;&#x7528;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Sed</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x4E0D;&#x901A;&#x8FC7;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#x800C;&#x76F4;&#x63A5;&#x7F16;&#x8F91;&#x6587;&#x672C;&#x7684;&#x529F;&#x80FD;&#x3002;&#x5927;&#x90E8;&#x5206; LFS &#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x914D;&#x7F6E;&#x811A;&#x672C;&#x9700;&#x8981;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Shadow</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x4EE5;&#x5B89;&#x5168;&#x65B9;&#x5F0F;&#x5904;&#x7406;&#x5BC6;&#x7801;&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
+</li>
+<li><p>Systemd</p>
+<p>  &#x4F5C;&#x4E3A; Sysvinit &#x7684;&#x66FF;&#x4EE3;&#x54C1;&#xFF0C;&#x8FD9;&#x4E2A;&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A; init &#x7A0B;&#x5E8F;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x5176;&#x5B83;&#x7684;&#x5F15;&#x5BFC;&#x548C;&#x7CFB;&#x7EDF;&#x63A7;&#x5236;&#x529F;&#x80FD;&#x3002;&#x5F88;&#x591A; Linux &#x53D1;&#x884C;&#x7248;&#x90FD;&#x7528;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Tar</p>
+<p>  &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x5F52;&#x6863;&#x548C;&#x63D0;&#x53D6; LFS &#x4E2D;&#x7684;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x80FD;&#x529B;&#x3002;</p>
+</li>
+<li><p>Tcl</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x5728;&#x5F88;&#x591A; LFS &#x8F6F;&#x4EF6;&#x5305;&#x6D4B;&#x8BD5;&#x5957;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x5DE5;&#x5177;&#x547D;&#x4EE4;&#x8BED;&#x8A00;&#x3002;&#x53EA;&#x5B89;&#x88C5;&#x5728;&#x4E34;&#x65F6;&#x5DE5;&#x5177;&#x94FE;&#x4E2D;&#x3002;</p>
+</li>
+<li><p>Texinfo</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x8BFB;&#x3001;&#x5199;&#x4EE5;&#x53CA;&#x8F6C;&#x6362;&#x4FE1;&#x606F;&#x9875;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x5728;&#x5F88;&#x591A; LFS &#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x5B89;&#x88C5;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x4F7F;&#x7528;&#x5B83;&#x3002;</p>
+</li>
+<li><p>Util-linux</p>
+<p>  &#x8BE5;&#x8F6F;&#x4EF6;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x8BB8;&#x591A;&#x5DE5;&#x5177;&#x3002;&#x5176;&#x4E2D;&#x6709;&#x5904;&#x7406;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3001;&#x63A7;&#x5236;&#x53F0;&#x3001;&#x5206;&#x533A;&#x548C;&#x6D88;&#x606F;&#x7684;&#x5DE5;&#x5177;&#x3002;</p>
+</li>
+<li><p>Vim</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E2A;&#x7F16;&#x8F91;&#x5668;&#x3002;&#x7531;&#x4E8E; vi &#x7F16;&#x8F91;&#x5668;&#x7684;&#x7ECF;&#x5178;&#x4EE5;&#x53CA;&#x5927;&#x91CF;&#x7684;&#x5F3A;&#x5927;&#x529F;&#x80FD;&#x800C;&#x9009;&#x62E9;&#x5B83;&#x3002;&#x5BF9;&#x5F88;&#x591A;&#x7528;&#x6237;&#x6765;&#x8BF4;&#x4E00;&#x4E2A;&#x7F16;&#x8F91;&#x5668;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x4E2A;&#x4EBA;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x7684;&#x8BDD;&#x4E5F;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x5176;&#x5B83;&#x7F16;&#x8F91;&#x5668;&#x3002;</p>
+</li>
+<li><p>XML::Parser</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x662F;&#x548C; Expat &#x4EA4;&#x4E92;&#x7684; Perl &#x6A21;&#x5757;&#x3002;</p>
+</li>
+<li><p>XZ Utils</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x538B;&#x7F29;&#x548C;&#x89E3;&#x538B;&#x7F29;&#x6587;&#x4EF6;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x901A;&#x5E38;&#x5B83;&#x7684;&#x538B;&#x7F29;&#x7387;&#x6700;&#x9AD8;&#xFF0C;&#x5728;&#x89E3;&#x538B; XZ &#x6216;&#x8005; LZMA &#x683C;&#x5F0F;&#x7684;&#x8F6F;&#x4EF6;&#x5305;&#x65F6;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;</p>
+</li>
+<li><p>Zlib</p>
+<p>  &#x8FD9;&#x4E2A;&#x5305;&#x5305;&#x62EC;&#x4E86;&#x4E00;&#x4E9B;&#x7A0B;&#x5E8F;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x538B;&#x7F29;&#x548C;&#x89E3;&#x538B;&#x7F29;&#x529F;&#x80FD;&#x3002;</p>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="standards.html" class="navigation navigation-prev " aria-label="Previous page: LFS 和标准">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="prerequisites.html" class="navigation navigation-next " aria-label="Next page: 前置需求">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"本书中的软件包逻辑","level":"1.2.5","depth":2,"next":{"title":"前置需求","level":"1.2.6","depth":2,"path":"prologue/prerequisites.md","ref":"prologue/prerequisites.md","articles":[]},"previous":{"title":"LFS 和标准","level":"1.2.4","depth":2,"path":"prologue/standards.md","ref":"prologue/standards.md","articles":[]},"dir":"ltr"},"config":{"plugins":["splitter","github","prism","-highlight","back-to-top-button","prism-themes","search-plus","-search","-lunr","katex","-sharing","sharing-plus","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/wenxuanjun/LFS-BOOK-8.3-systemd"},"livereload":{},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"prism-themes":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","qq","qzone"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"wenxuanjun","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Linux From Scratch ","language":"zh-hans","output.name":"site","gitbook":"*","description":"Linux From Scratch 简体中文版"},"file":{"path":"prologue/package-choices.md","mtime":"2018-09-24T12:54:04.870Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-29T01:55:31.475Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
