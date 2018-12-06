@@ -1,6 +1,6 @@
 # Linux From Scratch
 
-在线阅读（做好一页就上传一页）：[http://book.wendster.win](http://book.wendster.win)
+在线阅读（做好一页就上传一页）：<https://wendster.win/book>
 
 由于原版的比较丑陋，且在链接方面浪费了太多时间，所以，改用GitBook来“完成”（我也不知道能不能完成）这本书。
 
